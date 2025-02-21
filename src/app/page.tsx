@@ -12,6 +12,7 @@ import {
   MessageCircle,
   OctagonX,
 } from "lucide-react";
+import { data } from "./data";
 
 const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -140,19 +141,17 @@ const Portfolio = () => {
       <section className="py-20 px-4 bg-zinc-900">
         <h2 className="text-4xl font-bold text-center mb-16">Projects Stack</h2>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-          {[...Array(4)].map((_, i) => (
+          {data.map((_, i) => (
             <div
               key={i}
               className="group relative overflow-hidden rounded-xl bg-zinc-800 hover:transform hover:scale-[1.02] transition-all duration-300"
             >
               <div className="aspect-video bg-black" />
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">Project {i + 1}</h3>
-                <p className="text-slate-300 mb-4">
-                  A brief description of the project and the technologies used.
-                </p>
+                <h3 className="text-xl font-bold mb-2">{data[i].title}</h3>
+                <p className="text-slate-300 mb-4">{data[i].description}</p>
                 <div className="flex gap-2">
-                  {["React", "Node.js", "MongoDB"].map((tech, j) => (
+                  {data[i].stacks.map((tech, j) => (
                     <span
                       key={j}
                       className="px-4 py-1 rounded-full bg-zinc-900 text-zinc-50 text-sm"
